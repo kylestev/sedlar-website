@@ -5,6 +5,7 @@
   "main": "server.js",
   "scripts": {
     "build": "gulp",
+    "start": "concurrently --kill-others --raw \"gulp prod\" \"node git-stat.js\"",
     "start": "concurrently --kill-others --raw \"gulp dev\" \"node git-stat.js\""
   },
   "repository": {
