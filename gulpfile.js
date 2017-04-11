@@ -16,6 +16,13 @@ var runDefault = (cb) => runSequence(
 
 gulp.task('default', runDefault)
 
+// runs a production server without live-reloading
+gulp.task('prod', () => runDefault(() => { // first () => is required to find gulp tasks from runDefault
+  var server = require('./server-middleware')
+  server.listen(SERVER_PORT)
+  console.log(`listening on port ${SERVER_PORT}`)
+}))
+
 // runs a live-reload server
 gulp.task('dev', () => runDefault(() => { // first () => is required to find gulp tasks from runDefault
   var server = require('./server-middleware')
